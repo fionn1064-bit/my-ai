@@ -2,22 +2,22 @@
 <html>
 <head>
 <title>Nova AI</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2310a37f'%3E%3Cpath d='M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 14H4V6h16v12zM5 8.5h6v2H5zm0 4h8v2H5zm11.5-4L15 10l1.5 1.5L18 10z'/%3E%3C/svg%3E">
 
 <style>
-*{
-    box-sizing:border-box;
-    font-family:Inter,Arial,sans-serif;
+* {
+    box-sizing: border-box;
+    font-family: Inter, Arial, sans-serif;
 }
 
-body{
-    margin:0;
-    height:100vh;
-    background:#0f0f0f;
-    color:white;
-    display:flex;
+body {
+    margin: 0;
+    height: 100vh;
+    background: #0f0f0f;
+    color: white;
+    display: flex;
 }
 
-/* CUSTOM DARK SCROLLBARS */
 ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
@@ -33,104 +33,100 @@ body{
     background: #444; 
 }
 
-/* SIDEBAR */
-#sidebar{
-    width:280px;
-    background:#171717;
-    border-right:1px solid #333;
-    display:flex;
-    flex-direction:column;
-    padding:15px;
+#sidebar {
+    width: 280px;
+    background: #171717;
+    border-right: 1px solid #333;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
 }
 
-#newChat{
-    background:#10a37f;
-    border:none;
-    color:white;
-    padding:12px;
-    border-radius:8px;
-    cursor:pointer;
-    margin-bottom:15px;
-    font-size:15px;
+#newChat {
+    background: #10a37f;
+    border: none;
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 15px;
+    font-size: 15px;
 }
 
-#search{
-    background:#222;
-    border:1px solid #444;
-    color:white;
-    padding:10px;
-    border-radius:8px;
-    margin-bottom:15px;
+#search {
+    background: #222;
+    border: 1px solid #444;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
 }
 
-#chatList{
-    overflow-y:auto;
+#chatList {
+    overflow-y: auto;
 }
 
-/* CHAT ITEMS */
-.chatItem{
-    padding:10px;
-    border-radius:8px;
-    cursor:pointer;
-    margin-bottom:5px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    color:#ddd;
+.chatItem {
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #ddd;
 }
 
-.chatItem:hover{
-    background:#2a2a2a;
+.chatItem:hover {
+    background: #2a2a2a;
 }
 
-.chatTitle{
-    overflow:hidden;
-    text-overflow:ellipsis;
-    white-space:nowrap;
-    flex:1;
+.chatTitle {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex: 1;
 }
 
-.deleteChat{
-    opacity:0;
-    background:none;
-    border:none;
-    color:#888;
-    cursor:pointer;
-    font-size:16px;
-    padding:2px 6px;
-    border-radius:5px;
-    transition:0.2s;
+.deleteChat {
+    opacity: 0;
+    background: none;
+    border: none;
+    color: #888;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 2px 6px;
+    border-radius: 5px;
+    transition: 0.2s;
 }
 
-.chatItem:hover .deleteChat{
-    opacity:1;
+.chatItem:hover .deleteChat {
+    opacity: 1;
 }
 
-.deleteChat:hover{
-    background:#333;
-    color:white;
+.deleteChat:hover {
+    background: #333;
+    color: white;
 }
 
-/* MAIN PANEL & MODE TABS */
-#main{
-    flex:1;
-    display:flex;
-    flex-direction:column;
+#main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
     position: relative;
 }
 
 #headerBlock {
-    border-bottom:1px solid #333;
+    border-bottom: 1px solid #333;
     background: #111;
 }
 
-#header{
-    padding:18px 18px 10px 18px;
-    font-size:20px;
-    font-weight:bold;
+#header {
+    padding: 18px 18px 10px 18px;
+    font-size: 20px;
+    font-weight: bold;
 }
 
-/* MODE TAB STRIP */
 #modeTabs {
     display: flex;
     padding: 0 18px 12px 18px;
@@ -159,31 +155,30 @@ body{
     border-color: #2563eb;
 }
 
-#messages{
-    flex:1;
-    overflow-y:auto;
-    padding:25px;
+#messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 25px;
 }
 
-/* MESSAGE BUBBLES */
-.message{
-    max-width:75%;
-    padding:12px 16px;
-    border-radius:15px;
-    margin-bottom:15px;
-    line-height:1.5;
+.message {
+    max-width: 75%;
+    padding: 12px 16px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    line-height: 1.5;
     position: relative;
 }
 
-.user{
-    background:#2563eb;
-    margin-left:auto;
+.user {
+    background: #2563eb;
+    margin-left: auto;
 }
 
-.ai{
-    background:#222;
-    border:1px solid #333;
-    padding-bottom: 45px; /* Keeps padding open for Copy button space */
+.ai {
+    background: #222;
+    border: 1px solid #333;
+    padding-bottom: 45px;
 }
 
 .chat-image {
@@ -194,7 +189,25 @@ body{
     display: block;
 }
 
-/* INPUT COMPONENT SETUP */
+.embedded-file-block {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s ease;
+}
+
+.embedded-file-block:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: #aaa;
+}
+
 #inputContainer {
     display: flex;
     flex-direction: column;
@@ -209,25 +222,18 @@ body{
     gap: 10px;
 }
 
-.preview-box {
-    position: relative;
-    width: 60px;
-    height: 60px;
+.file-preview {
+    background: #222;
+    padding: 6px 12px;
     border-radius: 6px;
-    overflow: hidden;
     border: 1px solid #444;
-}
-
-.preview-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .remove-preview {
-    position: absolute;
-    top: 2px;
-    right: 2px;
     background: rgba(0,0,0,0.7);
     color: white;
     border: none;
@@ -241,23 +247,22 @@ body{
     justify-content: center;
 }
 
-#inputArea{
-    display:flex;
-    padding:15px;
+#inputArea {
+    display: flex;
+    padding: 15px;
     align-items: center;
     position: relative;
 }
 
-#messageInput{
-    flex:1;
-    padding:14px;
-    background:#222;
-    border:none;
-    color:white;
-    border-radius:10px;
+#messageInput {
+    flex: 1;
+    padding: 14px;
+    background: #222;
+    border: none;
+    color: white;
+    border-radius: 10px;
 }
 
-/* PLUS MENU ACTION COMPONENT */
 #plusWrapper {
     position: relative;
     margin-right: 10px;
@@ -311,24 +316,23 @@ body{
     color: white;
 }
 
-#send{
-    margin-left:10px;
-    padding:14px 20px;
-    border:none;
-    background:#10a37f;
-    color:white;
-    border-radius:10px;
-    cursor:pointer;
+#send {
+    margin-left: 10px;
+    padding: 14px 20px;
+    border: none;
+    background: #10a37f;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
     height: 46px;
 }
 
-.typing{
-    color:#aaa;
-    font-style:italic;
+.typing {
+    color: #aaa;
+    font-style: italic;
     margin-bottom: 15px;
 }
 
-/* UTILITY UTILS STYLE MAPS */
 .code-header {
     background: #2d2d2d;
     padding: 6px 12px;
@@ -377,13 +381,20 @@ body{
     color: white;
 }
 
-/* TYPEWRITER CURSOR EFFECT */
 .typing-cursor::after {
     content: "▋";
     font-size: 14px;
     color: #10a37f;
     animation: blink 0.8s infinite;
     margin-left: 2px;
+}
+
+.disclaimer-text {
+    text-align: center;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.4);
+    padding-bottom: 10px;
+    user-select: none;
 }
 
 @keyframes blink {
@@ -420,35 +431,97 @@ body{
             <div id="plusWrapper">
                 <button id="plusBtn">+</button>
                 <div id="plusMenu">
-                    <div class="menu-item" onclick="triggerFileInput()">📁 Add images and files</div>
+                    <div class="menu-item" onclick="triggerFileInput()">📁 Add files and images</div>
                     <div class="menu-item" onclick="selectAction('imageGen')">🎨 Create Images</div>
                     <div class="menu-item" onclick="selectAction('search')">🌐 Web Search</div>
                     <div class="menu-item" onclick="selectAction('deep')">🧠 Deep Thinking</div>
                 </div>
             </div>
 
-            <input type="file" id="hiddenFileInput" accept="image/*" style="display:none;">
+            <input type="file" id="hiddenFileInput" accept=".txt,.doc,.docx,.pdf,.xls,.xlsx,.ppt,.pptx,.csv,.html,.css,.js,.jsx,.ts,.tsx,.json,.xml,.md,.py,.java,.cpp,.c,.cs,.php,.rb,.go,.rs,.sh,.bat,.sql,.yaml,.yml,.ini,.log,.mp3,.wav,.ogg,.flac,.m4a,.mp4,.mkv,.avi,.mov,.wmv,.zip,.rar,.7z,.tar,.gz,.png,.jpg,.jpeg,.gif,.svg,.webp,.ico,.bmp" style="display:none;">
             <input id="messageInput" placeholder="Message Nova...">
             <button id="send">Send</button>
         </div>
+        <div class="disclaimer-text">Nova AI is not human. It may make mistakes, or encounter bugs.</div>
     </div>
 </div>
 
 <script>
-// Paste your actual OpenRouter key here inside the quotes!
-// Paste your active OpenRouter key here inside the quotes!
-const API_KEY = "REDACTED";
+// --- CRITICAL CONFIGURATION ---
+// We use prompt() so your key stays safe and never gets uploaded to GitHub!
+const OPENROUTER_API_KEY = localStorage.getItem("or_key") || prompt("Please enter your OpenRouter API Key:") || "";
+if (OPENROUTER_API_KEY) {
+    localStorage.setItem("or_key", OPENROUTER_API_KEY);
+}
 
 let chats = JSON.parse(localStorage.getItem("chats")) || [];
-let currentChat = null;
+let currentChat = chats.length > 0 ? chats[0] : null;
 let currentMode = "quick"; 
 let currentAction = null; 
 let attachedImageBase64 = null;
-let attachedMimeType = null;
-let isProcessing = false; // Anti-hammering throttle flag
+let attachedTextContent = null; 
+let attachedFileName = ""; 
+let isProcessing = false;
+
+function getFileIcon(fileName) {
+    let ext = fileName.split('.').pop().toLowerCase();
+    
+    const colors = {
+        document: "#0078d4", word: "#2b579a", excel: "#107c41", ppt: "#d83b01", pdf: "#ff2e2e",
+        code: "#a166ff", web: "#e44d26", css: "#264de4", script: "#f7df1e", json: "#cca700",
+        archive: "#ffaa00", audio: "#00bcf2", video: "#107c41", image: "#22b14c", data: "#00a3a3"
+    };
+
+    const mapping = {
+        txt: colors.document, log: colors.document, ini: colors.document,
+        doc: colors.word, docx: colors.word, rtf: colors.word,
+        pdf: colors.pdf,
+        xls: colors.excel, xlsx: colors.excel, csv: colors.data,
+        ppt: colors.ppt, pptx: colors.ppt,
+        html: colors.web, htm: colors.web, xhtml: colors.web,
+        css: colors.css, scss: colors.css, sass: colors.css, less: colors.css,
+        js: colors.script, jsx: colors.script, ts: colors.script, tsx: colors.script,
+        json: colors.json, xml: colors.json, yaml: colors.json, yml: colors.json,
+        md: colors.document, py: colors.code, java: colors.code, c: colors.code,
+        cpp: colors.code, h: colors.code, hpp: colors.code, cs: colors.code,
+        php: colors.code, rb: colors.code, go: colors.code, rs: colors.code,
+        sh: colors.code, bat: colors.code, sql: colors.data,
+        zip: colors.archive, rar: colors.archive, "7z": colors.archive, tar: colors.archive, gz: colors.archive,
+        mp3: colors.audio, wav: colors.audio, ogg: colors.audio, flac: colors.audio, m4a: colors.audio,
+        mp4: colors.video, mkv: colors.video, avi: colors.video, mov: colors.video, wmv: colors.video,
+        png: colors.image, jpg: colors.image, jpeg: colors.image, gif: colors.image, svg: colors.image, webp: colors.image, ico: colors.image, bmp: colors.image
+    };
+
+    let themeColor = mapping[ext] || "#888888";
+
+    return `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="vertical-align:middle; margin-right:10px;"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" fill="${themeColor}"/><text x="6" y="15" fill="#fff" font-size="5" font-weight="bold" font-family="monospace">${ext.substring(0,3).toUpperCase()}</text></svg>`;
+}
+
+function isExtensionAnImageAsset(name) {
+    let ext = name.split('.').pop().toLowerCase();
+    return ["png","jpg","jpeg","gif","svg","webp","ico","bmp"].includes(ext);
+}
 
 function save(){
-    localStorage.setItem("chats", JSON.stringify(chats));
+    try {
+        localStorage.setItem("chats", JSON.stringify(chats));
+    } catch (e) {
+        console.warn("Storage limits triggered. Truncating old text streams...");
+        for (let i = chats.length - 1; i >= 0; i--) {
+            if (chats[i].id !== (currentChat ? currentChat.id : null)) {
+                chats[i].messages.forEach(m => {
+                    m.image = "";
+                    m.fileText = "[Truncated data signature]";
+                });
+                break;
+            }
+        }
+        try {
+            localStorage.setItem("chats", JSON.stringify(chats));
+        } catch (err) {
+            console.error("Local storage allocation exception:", err);
+        }
+    }
 }
 
 function createChat(){
@@ -470,18 +543,6 @@ function setMode(mode, event) {
     event.target.classList.add("active");
 }
 
-const plusBtn = document.getElementById("plusBtn");
-const plusMenu = document.getElementById("plusMenu");
-
-plusBtn.onclick = (e) => {
-    e.stopPropagation();
-    plusMenu.style.display = plusMenu.style.display === "block" ? "none" : "block";
-};
-
-document.onclick = () => {
-    plusMenu.style.display = "none";
-};
-
 function triggerFileInput() {
     document.getElementById("hiddenFileInput").click();
 }
@@ -498,32 +559,35 @@ function selectAction(actionType) {
     }
 }
 
-document.getElementById("hiddenFileInput").onchange = (e) => {
-    let file = e.target.files[0];
-    if (!file) return;
-    attachedMimeType = file.type;
-
-    let reader = new FileReader();
-    reader.onload = function(event) {
-        attachedImageBase64 = event.target.result;
-        let previewArea = document.getElementById("previewArea");
-        previewArea.innerHTML = `
-            <div class="preview-box">
-                <img src="${attachedImageBase64}">
-                <button class="remove-preview" onclick="clearPreview()">×</button>
-            </div>
-        `;
-    };
-    reader.readAsDataURL(file);
-};
-
 function clearPreview() {
     attachedImageBase64 = null;
-    attachedMimeType = null;
+    attachedTextContent = null;
+    attachedFileName = "";
     document.getElementById("previewArea").innerHTML = "";
     document.getElementById("hiddenFileInput").value = "";
     document.getElementById("messageInput").placeholder = "Message Nova...";
     currentAction = null;
+}
+
+function inspectFileContents(chatId, messageIndex) {
+    let targetedChat = chats.find(c => c.id === chatId);
+    if (!targetedChat) return;
+    let msg = targetedChat.messages[messageIndex];
+    if (msg && msg.fileText) {
+        alert(`--- File Explorer Text Viewer [${msg.fileName || "document.txt"}] ---\n\n${msg.fileText.substring(0, 5000)}${msg.fileText.length > 5000 ? "\n\n[...Truncated in Preview Screen...]" : ""}`);
+    }
+}
+
+async function handleImageGeneration(promptText) {
+    let encodedPrompt = encodeURIComponent(promptText);
+    let dynamicAiImageUrl = `https://image.pollinations.ai/prompt/${encodedPrompt}?width=800&height=600&seed=${Math.floor(Math.random() * 100000)}`;
+
+    currentChat.messages.push({
+        role: "ai",
+        content: `✨ AI Canvas generated successfully for "${promptText}":`,
+        image: dynamicAiImageUrl
+    });
+    save(); renderMessages(); renderChats();
 }
 
 function renderChats(){
@@ -564,14 +628,27 @@ function renderMessages(){
     box.innerHTML = "";
     if(!currentChat) return;
 
-    currentChat.messages.forEach((m) => {
+    currentChat.messages.forEach((m, msgIndex) => {
         let div = document.createElement("div");
         div.className = "message " + m.role;
         
         let rawContent = m.content || "";
-        let parts = rawContent.split("```");
         let processedHTML = "";
 
+        if (m.role === "user" && m.fileText && !m.image) {
+            let customIcon = getFileIcon(m.fileName || "file.txt");
+            processedHTML += `
+                <div class="embedded-file-block" title="Double click to explore document contents" ondblclick="inspectFileContents(${currentChat.id}, ${msgIndex})">
+                    ${customIcon}
+                    <div style="display:flex; flex-direction:column; line-height: 1.2;">
+                        <strong style="color: #fff;">${m.fileName || "Attached Document"}</strong>
+                        <span style="font-size:11px; color:#aaa; margin-top:2px;">Double-click to inspect content data</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        let parts = rawContent.split("```");
         parts.forEach((part, index) => {
             if (index % 2 === 1) {
                 let lines = part.split("\n");
@@ -599,14 +676,14 @@ function renderMessages(){
             }
         });
 
-        div.innerHTML = processedHTML;
+        div.innerHTML += processedHTML;
 
         if (m.role === "ai") {
             let copyRespBtn = document.createElement("button");
             copyRespBtn.className = "copy-response-btn";
             copyRespBtn.innerText = "Copy response";
             copyRespBtn.onclick = function() {
-                navigator.clipboard.writeText(rawContent);
+                navigator.clipboard.writeText(m.content || "");
                 this.innerText = "Copied! ✓";
                 let btn = this;
                 setTimeout(function() { btn.innerText = "Copy response"; }, 2000);
@@ -626,118 +703,142 @@ function renderMessages(){
 }
 
 async function sendMessage(){
-    // Block multiple simultaneous enter-key executions
     if(isProcessing) return;
+    if(OPENROUTER_API_KEY === "YOUR_OPENROUTER_API_KEY_HERE" || !OPENROUTER_API_KEY) {
+        alert("Please paste your OpenRouter API key into line 211 of the script first!");
+        return;
+    }
 
     let input = document.getElementById("messageInput");
     let text = input.value.trim();
 
-    if(!text && !attachedImageBase64) return;
+    if(!text && !attachedImageBase64 && !attachedTextContent) return;
     if(!currentChat) createChat();
-
-    // Check for Image Generation Intent
-    if (currentAction === 'imageGen' || /\b(generate|create)\b.*\bimage\b/i.test(text)) {
-        await handleImageGeneration(text || "Vibrant AI Canvas");
-        input.value = "";
-        clearPreview();
-        return;
-    }
 
     isProcessing = true;
 
-    let userMessage = { role: "user", content: text, image: attachedImageBase64 };
+    let userMessage = { 
+        role: "user", 
+        content: text, 
+        image: attachedImageBase64,
+        fileText: attachedTextContent, 
+        fileName: attachedFileName 
+    };
     currentChat.messages.push(userMessage);
 
     if(currentChat.title === "New Chat") {
-        currentChat.title = text ? text.substring(0,25) : "Multimodal File";
+        currentChat.title = text ? text.substring(0,25) : (attachedFileName ? attachedFileName : "Chat Session");
     }
 
     input.value = "";
+    let currentImageToSend = attachedImageBase64;
     clearPreview();
     renderMessages();
     renderChats();
 
     let typing = document.createElement("div");
     typing.className = "typing";
-    typing.innerText = "Nova is processing...";
+    typing.innerText = "Nova is analyzing...";
     document.getElementById("messages").appendChild(typing);
 
-    // Dynamic Context Assembly
-    let sysInstructions = "You are Nova, an advanced, helpful AI assistant. Answer the user directly and cleanly using clean Markdown styling.";
-    if (currentAction === 'search') sysInstructions += " Perform a live web search emulation.";
-    if (currentMode === "thinking" || currentAction === 'deep') sysInstructions += " Break down your analysis step-by-step with logical reasoning.";
-    if (currentMode === "ultimate") sysInstructions += " Provide a highly accurate, long form, comprehensive breakdown.";
+    if (currentAction === 'imageGen' || /\b(generate|create)\b.*\bimage\b/i.test(text)) {
+        await handleImageGeneration(text || "AI Blueprint");
+        typing.remove();
+        isProcessing = false;
+        return;
+    }
 
-    let baseMessages = [{ role: "system", content: sysInstructions }];
+    let sysInstructions = "You are Nova, an advanced AI assistant. Answer using clean Markdown formatting.";
+    if (currentAction === 'search') sysInstructions += " Emulate a live web search summary.";
+    if (currentMode === "thinking" || currentAction === 'deep') sysInstructions += " Break down your analysis step-by-step with clear reasoning details.";
+    
+    let compiledPromptText = "";
+    if (userMessage.fileText) {
+        compiledPromptText = `[File Content from ${userMessage.fileName}]:\n"""\n${userMessage.fileText}\n"""\n\nUser Question: ${text || "Analyze this document."}`;
+    } else {
+        compiledPromptText = text || (currentImageToSend ? "Analyze this image." : "");
+    }
 
-    currentChat.messages.forEach(m => {
-        let roleName = m.role === "ai" ? "assistant" : "user";
-        baseMessages.push({ role: roleName, content: m.content || "" });
+    let contextPayload = [];
+    currentChat.messages.slice(0, -1).forEach(m => {
+        let historicalRole = m.role === "ai" ? "assistant" : "user";
+        contextPayload.push({ role: historicalRole, content: m.content || "" });
     });
 
     try {
-        // Direct request to Pollinations open text pipeline endpoint
-        let response = await fetch("https://text.pollinations.ai/", {
+        let reply = "";
+        let targetUrl = "https://openrouter.ai/api/v1/chat/completions";
+        
+       let requestBody = {
+            model: "google/gemini-2.5-flash",
+            max_tokens: 1000, // <--- Add this line here!
+            messages: [
+                { role: "system", content: sysInstructions },
+                ...contextPayload
+            ]
+        };
+
+        if (currentImageToSend) {
+            requestBody.messages.push({
+                role: "user",
+                content: [
+                    { type: "text", text: compiledPromptText },
+                    { type: "image_url", image_url: { url: currentImageToSend } }
+                ]
+            });
+        } else {
+            requestBody.messages.push({ role: "user", content: compiledPromptText });
+        }
+
+        let response = await fetch(targetUrl, {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json"
+            headers: { 
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${OPENROUTER_API_KEY}`,
+                "HTTP-Referer": "http://localhost",
+                "X-Title": "Nova AI"
             },
-            body: JSON.stringify({
-                messages: baseMessages,
-                model: "openai"
-            })
+            body: JSON.stringify(requestBody)
         });
 
         if (!response.ok) {
-            throw new Error(`HTTP Error Status: ${response.status}`);
+            let errorText = await response.text();
+            throw new Error(`HTTP Error Code: ${response.status} - ${errorText}`);
         }
-
-        let reply = await response.text();
+        
+        let jsonResponse = await response.json();
+        reply = jsonResponse.choices[0].message.content;
         typing.remove();
 
-        if (!reply.trim()) {
-            throw new Error("The server returned an empty text stream.");
-        }
-
-        // --- TYPEWRITER SYSTEM INTERACTION ---
-        // 1. Setup an empty placeholder message inside the active chat history
         let aiMessageObj = { role: "ai", content: "" };
         currentChat.messages.push(aiMessageObj);
         save(); renderMessages();
 
-        // 2. Locate the last message container node we just rendered
         let messageBoxes = document.querySelectorAll("#messages .message.ai");
         let targetBox = messageBoxes[messageBoxes.length - 1];
         if(targetBox) targetBox.classList.add("typing-cursor");
 
         let index = 0;
-        let speed = 7.5; // Animation text delay speed in milliseconds
+        let speed = 4; 
 
         function typeCharacter() {
             if (index < reply.length) {
-                // Read chunks to render HTML safely without cutting off Markdown symbols midway
                 aiMessageObj.content += reply.charAt(index);
                 index++;
-                
-                // Direct updates to keep UI fluid
                 renderMessages();
                 
-                // Keep cursor animation attached to the newest block during generation
                 let currentBoxes = document.querySelectorAll("#messages .message.ai");
                 let activeBox = currentBoxes[currentBoxes.length - 1];
                 if(activeBox) activeBox.classList.add("typing-cursor");
 
                 setTimeout(typeCharacter, speed);
             } else {
-                // Animation finishes, clean up tracking class cursor
                 let finalBoxes = document.querySelectorAll("#messages .message.ai");
                 let completeBox = finalBoxes[finalBoxes.length - 1];
                 if(completeBox) completeBox.classList.remove("typing-cursor");
                 save();
             }
         }
-        
-        // Fire animation trigger
         typeCharacter();
         
     } catch (err) {
@@ -749,29 +850,55 @@ async function sendMessage(){
     }
 }
 
-async function handleImageGeneration(promptText) {
-    if(!currentChat) createChat();
-    currentChat.messages.push({ role: "user", content: `Generate image: ${promptText}` });
-    renderMessages();
+// Global UI Event Configurations
+const plusBtn = document.getElementById("plusBtn");
+const plusMenu = document.getElementById("plusMenu");
 
-    let typing = document.createElement("div");
-    typing.className = "typing";
-    typing.innerText = "Nova is assembling canvas details...";
-    document.getElementById("messages").appendChild(typing);
+plusBtn.onclick = (e) => {
+    e.stopPropagation();
+    plusMenu.style.display = plusMenu.style.display === "block" ? "none" : "block";
+};
 
-    setTimeout(() => {
-        typing.remove();
-        let encodedPrompt = encodeURIComponent(promptText);
-        let dynamicAiImageUrl = `https://image.pollinations.ai/prompt/${encodedPrompt}?width=800&height=600&seed=${Math.floor(Math.random() * 100000)}`;
+document.onclick = () => {
+    plusMenu.style.display = "none";
+};
 
-        currentChat.messages.push({
-            role: "ai",
-            content: `✨ AI Canvas generated successfully for "${promptText}":`,
-            image: dynamicAiImageUrl
-        });
-        save(); renderMessages(); renderChats();
-    }, 1500);
-}
+document.getElementById("hiddenFileInput").onchange = (e) => {
+    let file = e.target.files[0];
+    if (!file) return;
+    attachedFileName = file.name;
+
+    let previewArea = document.getElementById("previewArea");
+    let iconLayout = getFileIcon(file.name);
+    
+    if (isExtensionAnImageAsset(file.name)) {
+        let reader = new FileReader();
+        reader.onload = function(event) {
+            attachedImageBase64 = event.target.result;
+            attachedTextContent = null; 
+            previewArea.innerHTML = `
+                <div class="file-preview">
+                    <span>${iconLayout} <strong>${file.name}</strong></span>
+                    <button class="remove-preview" onclick="clearPreview()">×</button>
+                </div>
+            `;
+        };
+        reader.readAsDataURL(file);
+    } else {
+        let reader = new FileReader();
+        reader.onload = function(event) {
+            attachedTextContent = event.target.result;
+            attachedImageBase64 = null;
+            previewArea.innerHTML = `
+                <div class="file-preview">
+                    <span>${iconLayout} <strong>${file.name}</strong></span>
+                    <button class="remove-preview" onclick="clearPreview()">×</button>
+                </div>
+            `;
+        };
+        reader.readAsText(file);
+    }
+};
 
 document.getElementById("send").onclick = sendMessage;
 document.getElementById("messageInput").addEventListener("keydown", e => {
@@ -780,7 +907,13 @@ document.getElementById("messageInput").addEventListener("keydown", e => {
 document.getElementById("newChat").onclick = createChat;
 document.getElementById("search").oninput = renderChats;
 
-renderChats();
+// Handle initialization state gracefully
+if (chats.length === 0) {
+    createChat();
+} else {
+    renderChats();
+    renderMessages();
+}
 </script>
 
 </body>
