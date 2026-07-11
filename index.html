@@ -448,11 +448,9 @@ body {
 
 <script>
 // --- CRITICAL CONFIGURATION ---
-// We use prompt() so your key stays safe and never gets uploaded to GitHub!
-const OPENROUTER_API_KEY = localStorage.getItem("or_key") || prompt("Please enter your OpenRouter API Key:") || "";
-if (OPENROUTER_API_KEY) {
-    localStorage.setItem("or_key", OPENROUTER_API_KEY);
-}
+// Paste your OpenRouter API Key (starts with sk-or-v1-...) inside the quotes below
+// Point this to your backend server instead of a raw key
+const BACKEND_URL = "http://localhost:3000/api/chat";
 
 let chats = JSON.parse(localStorage.getItem("chats")) || [];
 let currentChat = chats.length > 0 ? chats[0] : null;
@@ -767,11 +765,10 @@ async function sendMessage(){
 
     try {
         let reply = "";
-        let targetUrl = "https://openrouter.ai/api/v1/chat/completions";
         
-       let requestBody = {
+        let requestBody = {
             model: "google/gemini-2.5-flash",
-            max_tokens: 1000, // <--- Add this line here!
+            max_tokens: 1000,
             messages: [
                 { role: "system", content: sysInstructions },
                 ...contextPayload
@@ -790,25 +787,25 @@ async function sendMessage(){
             requestBody.messages.push({ role: "user", content: compiledPromptText });
         }
 
-        let response = await fetch(targetUrl, {
+        // --- CHANGED: Fetch from your backend proxy instead of directly from OpenRouter ---
+        let response = await fetch(BACKEND_URL, {
             method: "POST",
             headers: { 
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${OPENROUTER_API_KEY}`,
-                "HTTP-Referer": "http://localhost",
-                "X-Title": "Nova AI"
+                "Content-Type": "application/json"
             },
             body: JSON.stringify(requestBody)
         });
 
         if (!response.ok) {
             let errorText = await response.text();
-            throw new Error(`HTTP Error Code: ${response.status} - ${errorText}`);
+            throw new Error(`Server Error: ${response.status} - ${errorText}`);
         }
         
         let jsonResponse = await response.json();
         reply = jsonResponse.choices[0].message.content;
         typing.remove();
+        
+        // ... (Keep the rest of your original type-writer effect code underneath)
 
         let aiMessageObj = { role: "ai", content: "" };
         currentChat.messages.push(aiMessageObj);
